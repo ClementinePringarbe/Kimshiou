@@ -39,6 +39,44 @@ class RecipeRepository extends ServiceEntityRepository
         }
     }
 
+    //* DQL : Doctrine Query Language
+    // On veut créer une méthode qui nous renvoie toutes les recettes triées par leurs noms par ordre alphabétique
+    public function findAllRecipesByNameAscDQL()
+    {
+        $entityManager = $this->getEntityManager();
+
+        // En DQL, on ne fait pas de requête sur les tables directement, mais sur les entités Doctrine
+        //?https://www.doctrine-project.org/projects/doctrine-orm/en/2.11/reference/dql-doctrine-query-language.html#dql-select-examples
+        // On va donc utiliser le FQCN des entités à l'intérieur de la requête DQL
+        // En SQL :  SELECT * FROM recipe ORDER BY name ASC
+        $query = $entityManager->createQuery('
+            SELECT r FROM App\Entity\Recipe r ORDER BY r.name ASC
+        ');
+
+        return $query->getResult();
+    }
+
+    //* Query Builder
+    
+    /**
+     * On veut créer une méthode qui nous renvoie toutes les recettes triées par leurs noms par ordre alphabétique
+     *
+     * @return mixed
+     */
+    public function findAllRecipesByNameAscQb()
+    {
+        // Le querybuilder sait déjà qu'on va requêter sur l'entité Recipe
+        // car nous sommes dans RecipeRepository
+        // Donc pas besoin de préciser le FQCN de l'entité à requêter
+        // 'r' est juste l'alias de App\Entity\Recipe
+        $results = $this->createQueryBuilder('r') 
+            ->orderBy('r.name', 'ASC') // On trie sur la propriété creditOrder
+            ->getQuery()
+            ->getResult();
+
+        return $results;
+    }
+
 //    /**
 //     * @return Recipe[] Returns an array of Recipe objects
 //     */

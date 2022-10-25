@@ -1,0 +1,54 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Résultats de recherche
+{% endblock %}
+
+{% block body %}
+
+<!-- main -->
+
+<div class="container-xl bg-light p-5 border-top">
+
+	<div class="row mb-2">
+
+		<div class="col-12 col-lg-9">
+
+			<h2 class="text-muted fw-bold mb-4">Les recettes de Kimshiou</h2>
+
+			{% for recipe in listRecipes %}
+
+				<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm bg-white position-relative">
+					{# <div class="col-4 recipe__picture" style="background-image: url({{recipe.picture}});">
+						<img src="images/kimchi-1.jpg" class="img-fluid">
+					</div> #}
+					<div class="col-8 p-4 d-flex flex-column position-static">
+						<a href=""></a>
+						<strong class="d-inline-block mb-2 text-primary">
+							{{recipe.name}}
+						</strong>
+						<h3 class="mb-1">
+							{{recipe.ingredients}}
+						</h3>
+						<div class="mb-1 text-muted">
+							{{recipe.steps}}
+							€
+						</div>
+						<p>
+							<small>
+								{{recipe.duration}}
+							</small>
+						</p>
+
+                        {% else %}
+
+                    <em>Aucune recette en stock.</em>
+
+                {% endfor %}
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    {% endblock %}
