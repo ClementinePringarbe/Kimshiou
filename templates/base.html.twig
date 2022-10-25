@@ -2,8 +2,14 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="{{ asset('css/kimshiou.css') }}">
+
+        <title>Kimshiou {% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="{{ asset('icons8-kimchi-64.png') }}">
+
+
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -13,7 +19,72 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
+
     <body>
+
+    {# Navigation #}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a href="{{ path('home') }}" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none header-logo">
+                    <img src="{{asset('icons8-kimchi-64.png')}}" height="24" alt="Logo Kimshiou">
+                    <span class="header-logo__title">Kimshiou</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ path('home') }}">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Produits</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Recettes</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown">
+                                <span>Cerise</span>
+                                <i class="bi bi-person-square"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Profil</a></li>
+                                <li><a class="dropdown-item" href="#">Backoffice</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Déconnexion</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <button type="button" class="btn btn-danger me-2">Connexion</button>
+
+                    <form class="d-flex" action="list.html">
+                        <input class="form-control form-control-sm me-2" name="search" type="search" placeholder="Rechercher...">
+                        <button class="btn btn-outline-danger" type="submit"><i class="bi bi-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
         {% block body %}{% endblock %}
+
+    {# Footer #}
+    <footer class="container-fluid py-4 border-top text-center">
+            <span class="text-muted">Kimshiou fait avec &hearts; par Kimshiou !
+            </span>
+        </footer>
+
     </body>
 </html>
+
+
+
+
+
