@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recipe index{% endblock %}
+
+{% block body %}
+    <h1>Recipe index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Ingredients</th>
+                <th>Steps</th>
+                <th>Duration</th>
+                <th>Source</th>
+                <th>Created_at</th>
+                <th>Updated_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for recipe in recipes %}
+            <tr>
+                <td>{{ recipe.id }}</td>
+                <td>{{ recipe.name }}</td>
+                <td>{{ recipe.ingredients }}</td>
+                <td>{{ recipe.steps }}</td>
+                <td>{{ recipe.duration }}</td>
+                <td>{{ recipe.source }}</td>
+                <td>{{ recipe.createdAt ? recipe.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ recipe.updatedAt ? recipe.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_back_recipe_show', {'id': recipe.id}) }}">show</a>
+                    <a href="{{ path('app_back_recipe_edit', {'id': recipe.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_back_recipe_new') }}">Create new</a>
+{% endblock %}
