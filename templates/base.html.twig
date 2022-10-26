@@ -22,10 +22,11 @@
 
     <body>
 
+    {# La div container-fluid contient toute la navigation. #}
+    <div class="container-fluid">
     {# Navigation #}
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        {# La div container-fluid contient toute la navigation. #}
-            <div class="container-fluid">
+        
             {# Ici nous avons le titre du site, qui redirige sur l'accueil ainsi que l'icône. #}
                 <a href="{{ path('home') }}" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none header-logo">
                     <img src="{{asset('icons8-kimchi2.png')}}" height="24" alt="Logo Kimshiou">
@@ -33,7 +34,7 @@
                 </a>
                 
                 {# Une autre div contient une liste non ordonnée qui contient elle même les liens principaux de la navigation. #}
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                {# <div class="collapse navbar-collapse" id="navbarSupportedContent"> #}
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link active" href="{{ path('home') }}">Accueil</a>
@@ -58,7 +59,7 @@
                         <input class="form-control form-control-sm me-2" name="search" type="search" placeholder="Rechercher...">
                         <button class="btn btn-outline-danger" type="submit"><i class="bi bi-search"></i></button>
                     </form>
-                </div>
+                {# </div> #}
             </div>
         </nav>
 
@@ -68,6 +69,11 @@
     <footer class="container-fluid py-4 border-top text-center">
             <span class="text-muted">Kimshiou fait avec &hearts; par Kimshiou !
             </span>
+            <ul>
+            <li class="nav-item"><a class="links-footer" href="#">Mentions légales</a></li>
+            <li class="nav-item"><a class="links-footer" href="#">A propos</a></li>
+            <li class="nav-item"><a class="links-footer" href="#">Contact</a></li>
+            </ul>
         </footer>
 
     </body>

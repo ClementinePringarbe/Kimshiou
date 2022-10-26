@@ -2,25 +2,40 @@ body {
     text-align: center;
 }
 
-footer, nav { 
+footer { 
     background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(255,209,67,1) 0%, rgba(255,145,83,1) 90% );
+    padding: 1em;
 }
 
+/* Les liens "Mentions Légales, A propos, Contact" se trouvant dans le footer. */
+.links-footer {
+    display: flex;
+}
+
+/* Cette classe correspond aux puces des listes se trouvant dans la navigation et dans le footer. */
 .nav-item {
     /* Paramètre qui supprime les puces des listes. */
     list-style-type: none;
 }
 
+/* Titre du site. */
 .header-logo__title {
     color: #e50914;
     font-size: 1.5em;
     font-weight: bold;
     margin: 0 0.8em 0 0.3em;
     text-transform: uppercase;
+    text-align: center;
 }
 
+/* Div principale contenant le titre, l'icône et la navigation. */
 .container-fluid {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start; 
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(255,209,67,1) 0%, rgba(255,145,83,1) 90% );
+    padding: 1em;
 }
+
+/* .dropdown-item, .nav-link {
+    display: inline-flex;
+    flex-direction: row;
+} */
