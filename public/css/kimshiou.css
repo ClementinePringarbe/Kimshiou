@@ -1,3 +1,26 @@
 body {
     text-align: center;
 }
+
+footer, nav { 
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(255,209,67,1) 0%, rgba(255,145,83,1) 90% );
+}
+
+.nav-item {
+    /* Paramètre qui supprime les puces des listes. */
+    list-style-type: none;
+}
+
+.header-logo__title {
+    color: #e50914;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0 0.8em 0 0.3em;
+    text-transform: uppercase;
+}
+
+.container-fluid {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+}
